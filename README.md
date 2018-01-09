@@ -1,1 +1,9 @@
-# Superintendencia de Bancos e Instituciones Financieras - Chile
+SbifApiBundle
+=============
+
+License
+-------
+
+This bundle is under the MIT license. See the complete license in the bundle:
+
+    LICENSE
