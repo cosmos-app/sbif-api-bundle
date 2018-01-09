@@ -1,23 +1,32 @@
 {
-  "name": "cosmos-app/sbif-api-bundle",
-  "type": "symfony-bundle",
-  "description": "Sbif Api Bundle",
-  "keywords": ["sbif", "api", "bundle"],
-  "homepage": "https://github.com/cosmos-app/sbif-api-bundle",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Héctor Rojas",
-      "email": "hector.d.rojas.s@gmail.com"
+    "name": "cosmos-app/sbif-api-bundle",
+    "type": "symfony-bundle",
+    "description": "Sbif Api Bundle",
+    "keywords": [
+        "sbif",
+        "api",
+        "bundle"
+    ],
+    "homepage": "https://github.com/cosmos-app/sbif-api-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Héctor Rojas",
+            "email": "hector.d.rojas.s@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CosmosApp\\SbifApiBundle\\": ""
+        }
+    },
+    "require": {
+        "php": ">=5.3.9",
+        "symfony/symfony": "2.7"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
-  ],
-  "autoload":{
-    "psr-4":{
-      "CosmosApp\\SbifApiBundle\\": ""
-    }
-  },
-  "require": {
-    "php": ">=5.3.9",
-    "symfony/symfony": "2.7"
-  }
 }
