@@ -11,8 +11,6 @@
 
 namespace CosmosApp\SbifApiBundle\Services;
 
-use GuzzleHttp\Client;
-
 /**
  * @author Héctor Rojas <hector.d.rojas.s@gmail.com>
  */

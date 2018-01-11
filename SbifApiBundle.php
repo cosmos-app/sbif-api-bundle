@@ -11,6 +11,7 @@
 
 namespace CosmosApp\SbifApiBundle;
 
+use CosmosApp\SbifApiBundle\DependencyInjection\SbifApiExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -18,4 +19,11 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class SbifApiBundle extends Bundle
 {
+    /**
+     * @return SbifApiExtension
+     */
+    public function getContainerExtension()
+    {
+        return new SbifApiExtension();
+    }
 }
