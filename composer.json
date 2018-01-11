@@ -1,5 +1,6 @@
 {
     "name": "cosmos-app/sbif-api-bundle",
+    "license": "MIT",
     "type": "symfony-bundle",
     "description": "Sbif Api Bundle",
     "keywords": [
@@ -8,7 +9,6 @@
         "bundle"
     ],
     "homepage": "https://github.com/cosmos-app/sbif-api-bundle",
-    "license": "MIT",
     "authors": [
         {
             "name": "Héctor Rojas",
@@ -21,13 +21,13 @@
         }
     },
     "require": {
-        "php": ">=5.3.9",
-        "symfony/symfony": "~2.7.0",
-        "guzzlehttp/guzzle": "~6.0.0"
+        "php": ">=5.5.9",
+        "symfony/symfony": "~3.4.0",
+        "guzzlehttp/guzzle": "~6.0"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.x-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }
