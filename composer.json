@@ -24,10 +24,5 @@
         "php": ">=5.5.9",
         "symfony/symfony": "~2.7.0",
         "guzzlehttp/guzzle": "~6.0"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0.x-dev"
-        }
     }
 }
