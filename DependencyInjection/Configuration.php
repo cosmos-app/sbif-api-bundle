@@ -32,7 +32,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->arrayNode('sbif_api')
                     ->children()
-                        ->scalarNode('key')
+                        ->scalarNode('api_key')
                             ->isRequired()
                         ->end()
                     ->end()
