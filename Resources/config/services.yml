@@ -6,4 +6,4 @@ services:
 
     cosmos_app.sbif_api.dolar:
         class: CosmosApp\SbifApiBundle\Services\Dolar
-        arguments: ["@cosmos-app.sbif-api"]
+        arguments: ["@cosmos_app.sbif_api"]
