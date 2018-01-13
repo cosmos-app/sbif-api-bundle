@@ -33,6 +33,6 @@ class SbifApiExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $def = $container->getDefinition('cosmos_app.sbif_api');
-        $def->replaceArgument(0, $config['sbif_api']['api_key']);
+        $def->replaceArgument(0, $config['api_key']);
     }
 }

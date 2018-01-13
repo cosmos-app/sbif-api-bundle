@@ -26,14 +26,12 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
 
-        $rootNode = $treeBuilder->root('cosmos_app');
+        $rootNode = $treeBuilder->root('sbif_api');
 
         $rootNode
             ->children()
-                ->arrayNode('sbif_api')
-                    ->children()
-                        ->scalarNode('api_key')->end()
-                    ->end()
+                ->scalarNode('api_key')
+                    ->isRequired()
                 ->end()
             ->end()
         ;
