@@ -63,23 +63,43 @@ $sbifApi->getUf();  // Servicio Unidad de Fomento (UF)
 $sbifApi->getUtm(); // Servicio Unidad Tributaria Mensual (UTM)
 
 $value = $sbifApi->getUsd()->getByDate(\DateTime $date = null);
-$value = $sbifApi->getUsd()->getByMonth($year, $month);
-$value = $sbifApi->getUsd()->getByYear($year);
+$values = $sbifApi->getUsd()->getByMonth($year, $month);
+$values = $sbifApi->getUsd()->getByYear($year);
 
-$value = $sbifApi->getUsd()->getAfterDate(\DateTime $date);
-$value = $sbifApi->getUsd()->getAfterMonth($year, $month);
-$value = $sbifApi->getUsd()->getAfterYear($year);
+$values = $sbifApi->getUsd()->getAfterDate(\DateTime $date);
+$values = $sbifApi->getUsd()->getAfterMonth($year, $month);
+$values = $sbifApi->getUsd()->getAfterYear($year);
 
-$value = $sbifApi->getUsd()->getBeforeDate(\DateTime $date);
-$value = $sbifApi->getUsd()->getBeforeMonth($year, $month);
-$value = $sbifApi->getUsd()->getBeforeYear($year);
+$values = $sbifApi->getUsd()->getBeforeDate(\DateTime $date);
+$values = $sbifApi->getUsd()->getBeforeMonth($year, $month);
+$values = $sbifApi->getUsd()->getBeforeYear($year);
 
-$value = $sbifApi->getUsd()->getBetweenDates(\DateTime $dateSince, \DateTime $dateUntil);
-$value = $sbifApi->getUsd()->getBetweenMonths($yearSince, $monthSince, $yearUntil, $monthUntil);
-$value = $sbifApi->getUsd()->getBetweenYears($yearSince, $yearUntil);
+$values = $sbifApi->getUsd()->getBetweenDates(\DateTime $dateSince, \DateTime $dateUntil);
+$values = $sbifApi->getUsd()->getBetweenMonths($yearSince, $monthSince, $yearUntil, $monthUntil);
+$values = $sbifApi->getUsd()->getBetweenYears($yearSince, $yearUntil);
 ```
 
 Licencia
 --------
 
-[Licencia](LICENSE)
+MIT License
+
+Copyright (c) 2018 Héctor Rojas <https://github.com/cosmos-app>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
