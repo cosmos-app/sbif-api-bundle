@@ -1,9 +1,5 @@
 services:
     cosmos_app.sbif_api:
-        class: CosmosApp\SbifApiBundle\Services\SbifApi
+        class: CosmosApp\SbifApiBundle\Services\SbifApiService
         arguments:
             -
-
-    cosmos_app.sbif_api.dolar:
-        class: CosmosApp\SbifApiBundle\Services\Dolar
-        arguments: ["@cosmos_app.sbif_api"]
