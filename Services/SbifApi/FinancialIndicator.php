@@ -11,6 +11,8 @@
 
 namespace CosmosApp\SbifApiBundle\Services\SbifApi;
 
+use GuzzleHttp\Client;
+
 /**
  * @author Héctor Rojas <hector.d.rojas.s@gmail.com>
  */
@@ -23,35 +25,17 @@ class FinancialIndicator extends AbstractFinancialIndicator
     {
         $now = new \DateTime();
 
-        $request = $date && $date->format('Ymd') !== $now->format('Ymd')
-            ? $this->getEndPoint(
+        $uri = $date && $date->format('Ymd') !== $now->format('Ymd')
+            ? $this->getUri(
                 $date->format('Y'),
                 $date->format('m'),
                 $date->format('d')
-              )
-            : $this->getEndPoint(null, null, null);
-    }
+            )
+            : $this->getUri(null, null, null);
 
-    private function getEndPoint($year = null, $month = null, $day = null)
-    {
-        $url = $this->getRequestUrl();
-        $parameters = http_build_query($this->getRequestParameters());
+        $response = $this->get($uri);
 
-        $path = '';
-
-        if ($year) {
-            $path .= $year;
-
-            if ($month) {
-                $path .= '/'.$month;
-
-                if ($day) {
-                    $path .= '/dias/'.$day;
-                }
-            }
-        }
-
-        return sprintf('%s/%s?%s', $url, $path, $parameters);
+        dump($response);
     }
 
     /**
@@ -129,5 +113,41 @@ class FinancialIndicator extends AbstractFinancialIndicator
      */
     public function getBetweenYears($yearSince, $yearUntil)
     {
+    }
+
+    private function get($uri)
+    {
+        $client = new Client();
+
+        $response = $client->request('GET', $uri);
+    }
+
+    /**
+     * @param string $year
+     * @param string $month
+     * @param string $day
+     *
+     * @return string
+     */
+    private function getUri($year = null, $month = null, $day = null)
+    {
+        $url = $this->getRequestUrl();
+        $parameters = http_build_query($this->getRequestParameters());
+
+        $path = '';
+
+        if ($year) {
+            $path .= $year;
+
+            if ($month) {
+                $path .= '/'.$month;
+
+                if ($day) {
+                    $path .= '/dias/'.$day;
+                }
+            }
+        }
+
+        return sprintf('%s/%s?%s', $url, $path, $parameters);
     }
 }
