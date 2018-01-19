@@ -53,16 +53,21 @@ abstract class AbstractFinancialIndicator
     /**
      * @var string
      */
-    private $key;
+    private $indicatorKey;
 
     /**
-     * FinancialIndicator constructor.
-     *
-     * @param string $key
+     * @var Client
      */
-    public function __construct($key)
+    private $client;
+
+    /**
+     * AbstractFinancialIndicator constructor.
+     *
+     * @param string $apiKey
+     */
+    public function __construct($apiKey)
     {
-        $this->key = $key;
+        $this->client = new Client($apiKey);
     }
 
     /**
@@ -73,6 +78,26 @@ abstract class AbstractFinancialIndicator
         $response = $this->getByDate();
 
         return (string) $response['value'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getIndicatorKey()
+    {
+        return $this->indicatorKey;
+    }
+
+    /**
+     * @param string $indicatorKey
+     *
+     * @return $this
+     */
+    public function setIndicatorKey($indicatorKey)
+    {
+        $this->indicatorKey = $indicatorKey;
+
+        return $this;
     }
 
     /**
@@ -145,7 +170,7 @@ abstract class AbstractFinancialIndicator
      * @param \DateTime $dateSince
      * @param \DateTime $dateUntil
      *
-     * @return mixed
+     * @return []
      */
     abstract public function getBetweenDates(\DateTime $dateSince, \DateTime $dateUntil);
 

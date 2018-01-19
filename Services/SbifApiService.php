@@ -19,9 +19,9 @@ use CosmosApp\SbifApiBundle\Services\SbifApi\FinancialIndicator;
 class SbifApiService
 {
     /**
-     * @var string
+     * @var FinancialIndicator
      */
-    private $apiKey;
+    private $financialIndicator;
 
     /**
      * SbifApi constructor.
@@ -30,7 +30,7 @@ class SbifApiService
      */
     public function __construct($apiKey)
     {
-        $this->apiKey = $apiKey;
+        $this->financialIndicator = new FinancialIndicator($apiKey);
     }
 
     /**
@@ -38,7 +38,7 @@ class SbifApiService
      */
     public function getUsd()
     {
-        return new FinancialIndicator(FinancialIndicator::USD);
+        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::USD);
     }
 
     /**
@@ -46,7 +46,7 @@ class SbifApiService
      */
     public function getEur()
     {
-        return new FinancialIndicator(FinancialIndicator::EUR);
+        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::EUR);
     }
 
     /**
@@ -54,7 +54,7 @@ class SbifApiService
      */
     public function getIpc()
     {
-        return new FinancialIndicator(FinancialIndicator::IPC);
+        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::IPC);
     }
 
     /**
@@ -62,7 +62,7 @@ class SbifApiService
      */
     public function getTmc()
     {
-        return new FinancialIndicator(FinancialIndicator::TMC);
+        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::TMC);
     }
 
     /**
@@ -70,7 +70,7 @@ class SbifApiService
      */
     public function getTab()
     {
-        return new FinancialIndicator(FinancialIndicator::TAB);
+        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::TAB);
     }
 
     /**
@@ -78,7 +78,7 @@ class SbifApiService
      */
     public function getUf()
     {
-        return new FinancialIndicator(FinancialIndicator::UF);
+        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::UF);
     }
 
     /**
@@ -86,6 +86,6 @@ class SbifApiService
      */
     public function getUtm()
     {
-        return new FinancialIndicator(FinancialIndicator::UTM);
+        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::UTM);
     }
 }
