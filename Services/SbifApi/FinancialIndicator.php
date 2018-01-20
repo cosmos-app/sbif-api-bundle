@@ -21,17 +21,15 @@ class FinancialIndicator extends AbstractFinancialIndicator
     {
         $now = new \DateTime();
 
-        if ($date && $date->format('Ymd') !== $now->format('Ymd')) {
-            $path = $this->getPath(
+        $path = $date && $date->format('Ymd') !== $now->format('Ymd')
+            ? $this->getPath(
                 $date->format('Y'),
                 $date->format('m'),
                 $date->format('d')
-            );
+            )
+            : $this->getPath();
 
-            return $this->getApiClient()->get($path);
-        }
-
-        return $this->getApiClient()->get();
+        return $this->getApiClient()->get($path);
     }
 
     /**

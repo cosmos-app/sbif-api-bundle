@@ -107,7 +107,7 @@ abstract class AbstractFinancialIndicator
      */
     public function getPath($year = null, $month = null, $day = null)
     {
-        $path = '';
+        $path = '/'.self::$requestUrl[$this->indicatorKey];
 
         if ($year) {
             $path .= $year;

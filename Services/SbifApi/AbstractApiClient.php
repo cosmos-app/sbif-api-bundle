@@ -42,22 +42,20 @@ abstract class AbstractApiClient
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    abstract public function get($path = null);
+    abstract public function get($path);
 
     /**
      * @param string $path
      *
      * @return string
      */
-    protected function getUri($path = null)
+    protected function getUri($path)
     {
         $url = $this->getApiUrl();
 
         $parameters = http_build_query($this->getApiParameters());
 
-        return $path
-            ? sprintf('%s/%s?%s', $url, $path, $parameters)
-            : sprintf('%s?%s', $url, $parameters);
+        return sprintf('%s/%s?%s', $url, $path, $parameters);
     }
 
     /**
@@ -74,7 +72,7 @@ abstract class AbstractApiClient
     private function getApiParameters()
     {
         return [
-            'api_key' => $this->apiKey,
+            'apikey' => $this->apiKey,
             'formato' => 'json',
         ];
     }
