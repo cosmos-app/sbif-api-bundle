@@ -59,6 +59,16 @@ abstract class AbstractFinancialIndicator
     private $apiClient;
 
     /**
+     * AbstractFinancialIndicator constructor.
+     *
+     * @param string $apiKey
+     */
+    public function __construct($apiKey)
+    {
+        $this->apiClient = new ApiClient($apiKey);
+    }
+
+    /**
      * @return string
      */
     public function __toString()
@@ -95,7 +105,7 @@ abstract class AbstractFinancialIndicator
      *
      * @return string
      */
-    protected function getPath($year = null, $month = null, $day = null)
+    public function getPath($year = null, $month = null, $day = null)
     {
         $path = '';
 
@@ -117,7 +127,7 @@ abstract class AbstractFinancialIndicator
     /**
      * @return ApiClient
      */
-    protected function getApiClient()
+    public function getApiClient()
     {
         return $this->apiClient;
     }

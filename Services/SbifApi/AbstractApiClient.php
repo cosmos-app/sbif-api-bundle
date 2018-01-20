@@ -42,20 +42,22 @@ abstract class AbstractApiClient
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    abstract public function get($path);
+    abstract public function get($path = null);
 
     /**
      * @param string $path
      *
      * @return string
      */
-    protected function getUri($path)
+    protected function getUri($path = null)
     {
         $url = $this->getApiUrl();
 
         $parameters = http_build_query($this->getApiParameters());
 
-        return sprintf('%s/%s?%s', $url, $path, $parameters);
+        return $path
+            ? sprintf('%s/%s?%s', $url, $path, $parameters)
+            : sprintf('%s?%s', $url, $parameters);
     }
 
     /**
@@ -63,7 +65,7 @@ abstract class AbstractApiClient
      */
     private function getApiUrl()
     {
-        return 'http://api.sbif.cl/api-sbifv3/recursos_api/';
+        return 'http://api.sbif.cl/api-sbifv3/recursos_api';
     }
 
     /**

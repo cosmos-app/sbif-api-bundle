@@ -17,7 +17,7 @@ class ApiClient extends AbstractApiClient
     /**
      * {@inheritdoc}
      */
-    public function get($path)
+    public function get($path = null)
     {
         $uri = $this->getUri($path);
 
