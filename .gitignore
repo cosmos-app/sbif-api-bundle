@@ -1,8 +1,15 @@
-vendor
+# Directories
+
+.idea/
+
+bin/
+cache/
+logs/
+vendor/
+
+# Files
 
 composer.phar
 composer.lock
 
 .php_cs.cache
-
-.idea

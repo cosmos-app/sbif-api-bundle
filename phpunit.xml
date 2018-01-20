@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2018 Cosmos App <https://github.com/cosmos-app>.
+  ~
+  ~ For the full copyright and license information,
+  ~ please view the LICENSE file that was distributed with this source code.
+  -->
+
+<phpunit bootstrap="./vendor/autoload.php" colors="true">
+    <testsuites>
+        <testsuite name="SbifApiBundle">
+            <directory suffix="Test.php">./Tests</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <server name="KERNEL_DIR" value="Tests/App/" />
+    </php>
+</phpunit>
