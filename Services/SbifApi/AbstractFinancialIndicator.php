@@ -54,19 +54,9 @@ abstract class AbstractFinancialIndicator
     private $indicatorKey;
 
     /**
-     * @var Client
+     * @var ApiClient
      */
-    private $client;
-
-    /**
-     * AbstractFinancialIndicator constructor.
-     *
-     * @param string $apiKey
-     */
-    public function __construct($apiKey)
-    {
-        $this->client = new Client($apiKey);
-    }
+    private $apiClient;
 
     /**
      * @return string
@@ -99,9 +89,43 @@ abstract class AbstractFinancialIndicator
     }
 
     /**
+     * @param string $year
+     * @param string $month
+     * @param string $day
+     *
+     * @return string
+     */
+    protected function getPath($year = null, $month = null, $day = null)
+    {
+        $path = '';
+
+        if ($year) {
+            $path .= $year;
+
+            if ($month) {
+                $path .= '/'.$month;
+
+                if ($day) {
+                    $path .= '/dias/'.$day;
+                }
+            }
+        }
+
+        return $path;
+    }
+
+    /**
+     * @return ApiClient
+     */
+    protected function getApiClient()
+    {
+        return $this->apiClient;
+    }
+
+    /**
      * @param \DateTime|null $date
      *
-     * @return []
+     * @return array
      */
     abstract public function getByDate(\DateTime $date = null);
 
@@ -109,21 +133,21 @@ abstract class AbstractFinancialIndicator
      * @param string $year
      * @param string $month
      *
-     * @return []
+     * @return array
      */
     abstract public function getByMonth($year, $month);
 
     /**
      * @param string $year
      *
-     * @return []
+     * @return array
      */
     abstract public function getByYear($year);
 
     /**
      * @param \DateTime|null $date
      *
-     * @return []
+     * @return array
      */
     abstract public function getAfterDate(\DateTime $date);
 
@@ -131,21 +155,21 @@ abstract class AbstractFinancialIndicator
      * @param string $year
      * @param string $month
      *
-     * @return []
+     * @return array
      */
     abstract public function getAfterMonth($year, $month);
 
     /**
      * @param string $year
      *
-     * @return []
+     * @return array
      */
     abstract public function getAfterYear($year);
 
     /**
      * @param \DateTime|null $date
      *
-     * @return []
+     * @return array
      */
     abstract public function getBeforeDate(\DateTime $date);
 
@@ -153,14 +177,14 @@ abstract class AbstractFinancialIndicator
      * @param string $year
      * @param string $month
      *
-     * @return []
+     * @return array
      */
     abstract public function getBeforeMonth($year, $month);
 
     /**
      * @param string $year
      *
-     * @return []
+     * @return array
      */
     abstract public function getBeforeYear($year);
 
@@ -168,7 +192,7 @@ abstract class AbstractFinancialIndicator
      * @param \DateTime $dateSince
      * @param \DateTime $dateUntil
      *
-     * @return []
+     * @return array
      */
     abstract public function getBetweenDates(\DateTime $dateSince, \DateTime $dateUntil);
 
@@ -178,7 +202,7 @@ abstract class AbstractFinancialIndicator
      * @param string $yearUntil
      * @param string $monthUntil
      *
-     * @return []
+     * @return array
      */
     abstract public function getBetweenMonths($yearSince, $monthSince, $yearUntil, $monthUntil);
 
@@ -186,7 +210,7 @@ abstract class AbstractFinancialIndicator
      * @param string $yearSince
      * @param string $yearUntil
      *
-     * @return []
+     * @return array
      */
     abstract public function getBetweenYears($yearSince, $yearUntil);
 }

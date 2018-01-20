@@ -50,41 +50,50 @@ Uso
 
 ### B) Indicadores
 
+1. Invoque el servicio
 
-```php
-$sbifApi = $this->get('cosmos_app.sbif_api');
+    ```php
+    $sbifApi = $this->get('cosmos_app.sbif_api');
+    ```
 
-$sbifApi->getUsd(); // Servicio Dólar Americano (USD)
-$sbifApi->getEur(); // Servicio Euro (EUR)
-$sbifApi->getIpc(); // Servicio Indice de Precios al Consumidor (IPC)
-$sbifApi->getTmc(); // Servicio Tasa de Interés Máxima Convencional (TMC)
-$sbifApi->getTab(); // Servicio Tasa TAB UF 360 días (TAB)
-$sbifApi->getUf();  // Servicio Unidad de Fomento (UF)
-$sbifApi->getUtm(); // Servicio Unidad Tributaria Mensual (UTM)
+1. Invoque el método del indicador que requiera
 
-$value = $sbifApi->getUsd()->getByDate(\DateTime $date = null);
-$values = $sbifApi->getUsd()->getByMonth($year, $month);
-$values = $sbifApi->getUsd()->getByYear($year);
+    ```php
+    $sbifApi->getUsd(); // Servicio Dólar Americano (USD)
+    $sbifApi->getEur(); // Servicio Euro (EUR)
+    $sbifApi->getIpc(); // Servicio Indice de Precios al Consumidor (IPC)
+    $sbifApi->getTmc(); // Servicio Tasa de Interés Máxima Convencional (TMC)
+    $sbifApi->getTab(); // Servicio Tasa TAB UF 360 días (TAB)
+    $sbifApi->getUf();  // Servicio Unidad de Fomento (UF)
+    $sbifApi->getUtm(); // Servicio Unidad Tributaria Mensual (UTM)
+    ```
 
-$values = $sbifApi->getUsd()->getAfterDate(\DateTime $date);
-$values = $sbifApi->getUsd()->getAfterMonth($year, $month);
-$values = $sbifApi->getUsd()->getAfterYear($year);
+1. Invoque el método del indicador que requiera
 
-$values = $sbifApi->getUsd()->getBeforeDate(\DateTime $date);
-$values = $sbifApi->getUsd()->getBeforeMonth($year, $month);
-$values = $sbifApi->getUsd()->getBeforeYear($year);
+    ```php
+    $value = $sbifApi->getUsd()->getByDate(\DateTime $date = null);
+    $values = $sbifApi->getUsd()->getByMonth($year, $month);
+    $values = $sbifApi->getUsd()->getByYear($year);
 
-$values = $sbifApi->getUsd()->getBetweenDates(\DateTime $dateSince, \DateTime $dateUntil);
-$values = $sbifApi->getUsd()->getBetweenMonths($yearSince, $monthSince, $yearUntil, $monthUntil);
-$values = $sbifApi->getUsd()->getBetweenYears($yearSince, $yearUntil);
-```
+    $values = $sbifApi->getUsd()->getAfterDate(\DateTime $date);
+    $values = $sbifApi->getUsd()->getAfterMonth($year, $month);
+    $values = $sbifApi->getUsd()->getAfterYear($year);
+
+    $values = $sbifApi->getUsd()->getBeforeDate(\DateTime $date);
+    $values = $sbifApi->getUsd()->getBeforeMonth($year, $month);
+    $values = $sbifApi->getUsd()->getBeforeYear($year);
+
+    $values = $sbifApi->getUsd()->getBetweenDates(\DateTime $dateSince, \DateTime $dateUntil);
+    $values = $sbifApi->getUsd()->getBetweenMonths($yearSince, $monthSince, $yearUntil, $monthUntil);
+    $values = $sbifApi->getUsd()->getBetweenYears($yearSince, $yearUntil);
+    ```
 
 Licencia
 --------
 
 MIT License
 
-Copyright (c) 2018 Héctor Rojas <hector.d.rojas.s@gmail.com>
+Copyright (c) 2018 Cosmos App <https://github.com/cosmos-app>.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
