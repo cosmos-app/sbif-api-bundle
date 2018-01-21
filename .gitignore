@@ -9,6 +9,8 @@ vendor/
 
 # Files
 
+phpunit.xml
+
 composer.phar
 composer.lock
 
