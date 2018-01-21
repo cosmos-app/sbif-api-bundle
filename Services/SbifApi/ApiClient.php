@@ -19,10 +19,8 @@ class ApiClient extends AbstractApiClient
      */
     public function get($path)
     {
-        $uri = $this->getUri($path);
+        $uri = $this->getApiUri($path);
 
-        $response = $this->httpClient->request('GET', $uri);
-
-        return $response;
+        return $this->request($uri);
     }
 }

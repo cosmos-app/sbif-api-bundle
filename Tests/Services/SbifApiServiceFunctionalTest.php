@@ -40,7 +40,7 @@ class SbifApiServiceFunctionalTest extends KernelTestCase
     public function testUsdGetByDate()
     {
         $date = new \DateTime();
-        $date->modify('-1 day');
+        $date->modify('-4 day');
 
         $value = $this
             ->sbifApiService

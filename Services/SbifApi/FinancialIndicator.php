@@ -29,7 +29,12 @@ class FinancialIndicator extends AbstractFinancialIndicator
             )
             : $this->getPath();
 
-        return $this->getApiClient()->get($path);
+        $response = $this->getApiClient()->get($path);
+
+        return [
+            'value' => $response[self::$responseKey[$this->getIndicatorKey()]][0]['Valor'],
+            'date' => $response[self::$responseKey[$this->getIndicatorKey()]][0]['Fecha'],
+        ];
     }
 
     /**

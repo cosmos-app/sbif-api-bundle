@@ -110,7 +110,7 @@ abstract class AbstractFinancialIndicator
         $path = '/'.self::$requestUrl[$this->indicatorKey];
 
         if ($year) {
-            $path .= $year;
+            $path .= '/'.$year;
 
             if ($month) {
                 $path .= '/'.$month;

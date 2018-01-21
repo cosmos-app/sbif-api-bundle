@@ -10,6 +10,7 @@
 namespace CosmosApp\SbifApiBundle\Services\SbifApi;
 
 use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\RequestException;
 
 /**
  * @author Héctor Rojas <hector.d.rojas.s@gmail.com>
@@ -45,17 +46,33 @@ abstract class AbstractApiClient
     abstract public function get($path);
 
     /**
+     * @param string $uri
+     *
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     *
+     * @throws \Exception
+     */
+    protected function request($uri)
+    {
+        try {
+            $response = $this->httpClient->request('GET', $uri, [
+                'query' => $this->getApiParameters(),
+            ]);
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $exception) {
+            return ['error' => $exception->getMessage()];
+        }
+    }
+
+    /**
      * @param string $path
      *
      * @return string
      */
-    protected function getUri($path)
+    protected function getApiUri($path)
     {
-        $url = $this->getApiUrl();
-
-        $parameters = http_build_query($this->getApiParameters());
-
-        return sprintf('%s/%s?%s', $url, $path, $parameters);
+        return sprintf('%s%s', $this->getApiUrl(), $path);
     }
 
     /**
