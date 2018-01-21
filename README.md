@@ -1,6 +1,8 @@
 SbifApiBundle
 =============
 
+![Travis](https://api.travis-ci.org/cosmos-app/sbif-api-bundle.svg?branch=2.0) 
+
 Este bundle para Symony 2 permite el acceso a los Reportes Bancarios e Indicadores Financieros proveídos por la
 Superintendencia de Bancos e Instituciones Financieras de Chile a través de su [API](http://api.sbif.cl).
 
