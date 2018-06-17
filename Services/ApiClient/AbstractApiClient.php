@@ -7,9 +7,10 @@
  * please view the LICENSE file that was distributed with this source code.
  */
 
-namespace CosmosApp\SbifApiBundle\Services\SbifApi;
+namespace CosmosApp\SbifApiBundle\Services\ApiClient;
 
 use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
 
 /**
@@ -48,9 +49,7 @@ abstract class AbstractApiClient
     /**
      * @param string $uri
      *
-     * @return mixed|\Psr\Http\Message\ResponseInterface
-     *
-     * @throws \Exception
+     * @return array|\Psr\Http\Message\ResponseInterface
      */
     protected function request($uri)
     {
@@ -61,6 +60,10 @@ abstract class AbstractApiClient
 
             return json_decode($response->getBody()->getContents(), true);
         } catch (RequestException $exception) {
+            return ['error' => $exception->getMessage()];
+        } catch (GuzzleException $exception) {
+            return ['error' => $exception->getMessage()];
+        } catch (\Exception $exception) {
             return ['error' => $exception->getMessage()];
         }
     }

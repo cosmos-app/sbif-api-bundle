@@ -9,7 +9,7 @@
 
 namespace CosmosApp\SbifApiBundle\Services;
 
-use CosmosApp\SbifApiBundle\Services\SbifApi\FinancialIndicator;
+use CosmosApp\SbifApiBundle\Services\FinancialIndicator\FinancialIndicator;
 
 /**
  * @author Héctor Rojas <hector.d.rojas.s@gmail.com>

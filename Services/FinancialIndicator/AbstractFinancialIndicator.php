@@ -7,7 +7,9 @@
  * please view the LICENSE file that was distributed with this source code.
  */
 
-namespace CosmosApp\SbifApiBundle\Services\SbifApi;
+namespace CosmosApp\SbifApiBundle\Services\FinancialIndicator;
+
+use CosmosApp\SbifApiBundle\Services\ApiClient\ApiClient;
 
 /**
  * @author Héctor Rojas <hector.d.rojas.s@gmail.com>
