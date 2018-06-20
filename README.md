@@ -45,7 +45,8 @@ class AppKernel extends Kernel
 ```yaml
 # app/config/config.yml
 sbif_api:
-    api_key: ""
+    api_url: http://api.sbif.cl/api-sbifv3/recursos_api 
+    api_key:
 ```
 
 Uso

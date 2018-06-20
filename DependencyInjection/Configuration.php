@@ -28,6 +28,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('api_url')
+                    ->defaultValue('http://api.sbif.cl/api-sbifv3/recursos_api')
+                ->end()
                 ->scalarNode('api_key')
                     ->isRequired()
                 ->end()

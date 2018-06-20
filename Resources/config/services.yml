@@ -1,5 +1,11 @@
 services:
+    cosmos_app.sbif_api_client:
+        class: CosmosApp\SbifApiBundle\Services\SbifApiClientService
+        arguments:
+            -
+            -
+
     cosmos_app.sbif_api:
         class: CosmosApp\SbifApiBundle\Services\SbifApiService
         arguments:
-            -
+            - @cosmos_app.sbif_api_client

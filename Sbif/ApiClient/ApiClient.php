@@ -7,20 +7,11 @@
  * please view the LICENSE file that was distributed with this source code.
  */
 
-namespace CosmosApp\SbifApiBundle\Services\ApiClient;
+namespace CosmosApp\SbifApiBundle\Sbif\ApiClient;
 
 /**
  * @author Héctor Rojas <hector.d.rojas.s@gmail.com>
  */
 class ApiClient extends AbstractApiClient
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function get($path)
-    {
-        $uri = $this->getApiUri($path);
-
-        return $this->request($uri);
-    }
 }

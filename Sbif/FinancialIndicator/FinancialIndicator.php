@@ -7,7 +7,7 @@
  * please view the LICENSE file that was distributed with this source code.
  */
 
-namespace CosmosApp\SbifApiBundle\Services\FinancialIndicator;
+namespace CosmosApp\SbifApiBundle\Sbif\FinancialIndicator;
 
 /**
  * @author Héctor Rojas <hector.d.rojas.s@gmail.com>
@@ -31,65 +31,67 @@ class FinancialIndicator extends AbstractFinancialIndicator
 
         $response = $this->getApiClient()->get($path);
 
+        dump($response);die;
+
         return [
-            'value' => $response[self::$responseKey[$this->getIndicatorKey()]][0]['Valor'],
-            'date' => $response[self::$responseKey[$this->getIndicatorKey()]][0]['Fecha'],
+            'value' => $response[self::$responseKey[$this->getIndicator()]][0]['Valor'],
+            'date' => $response[self::$responseKey[$this->getIndicator()]][0]['Fecha'],
         ];
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getByMonth($year, $month)
+    public function getByMonth(\DateTime $date = null)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getByYear($year)
+    public function getByYear(\DateTime $date = null)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getAfterDate(\DateTime $date)
+    public function getAfterDate(\DateTime $date = null)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getAfterMonth($year, $month)
+    public function getAfterMonth(\DateTime $date = null)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getAfterYear($year)
+    public function getAfterYear(\DateTime $date = null)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getBeforeDate(\DateTime $date)
+    public function getBeforeDate(\DateTime $date = null)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getBeforeMonth($year, $month)
+    public function getBeforeMonth(\DateTime $date = null)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getBeforeYear($year)
+    public function getBeforeYear(\DateTime $date = null)
     {
     }
 
@@ -103,14 +105,14 @@ class FinancialIndicator extends AbstractFinancialIndicator
     /**
      * {@inheritdoc}
      */
-    public function getBetweenMonths($yearSince, $monthSince, $yearUntil, $monthUntil)
+    public function getBetweenMonths(\DateTime $dateSince, \DateTime $dateUntil)
     {
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getBetweenYears($yearSince, $yearUntil)
+    public function getBetweenYears(\DateTime $dateSince, \DateTime $dateUntil)
     {
     }
 }

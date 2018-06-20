@@ -7,17 +7,23 @@
  * please view the LICENSE file that was distributed with this source code.
  */
 
-namespace CosmosApp\SbifApiBundle\Services\ApiClient;
+namespace CosmosApp\SbifApiBundle\Sbif\ApiClient;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * @author Héctor Rojas <hector.d.rojas.s@gmail.com>
  */
-abstract class AbstractApiClient
+abstract class AbstractApiClient implements ApiClientInterface
 {
+    /**
+     * @var string
+     */
+    private $apiUrl;
+
     /**
      * @var string
      */
@@ -29,30 +35,32 @@ abstract class AbstractApiClient
     protected $httpClient;
 
     /**
-     * AbstractFinancialIndicator constructor.
-     *
-     * @param string $apiKey
+     * {@inheritdoc}
      */
-    public function __construct($apiKey)
+    public function __construct($apiUrl, $apiKey)
     {
+        $this->apiUrl = $apiUrl;
         $this->apiKey = $apiKey;
         $this->httpClient = new HttpClient();
     }
 
     /**
-     * @param string $path
-     *
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * {@inheritdoc}
      */
-    abstract public function get($path);
+    public function get($path)
+    {
+        return $this->request($path);
+    }
 
     /**
-     * @param string $uri
+     * @param string $path
      *
-     * @return array|\Psr\Http\Message\ResponseInterface
+     * @return array|ResponseInterface
      */
-    protected function request($uri)
+    private function request($path)
     {
+        $uri = $this->getApiUri($path);
+
         try {
             $response = $this->httpClient->request('GET', $uri, [
                 'query' => $this->getApiParameters(),
@@ -73,17 +81,9 @@ abstract class AbstractApiClient
      *
      * @return string
      */
-    protected function getApiUri($path)
+    private function getApiUri($path)
     {
-        return sprintf('%s%s', $this->getApiUrl(), $path);
-    }
-
-    /**
-     * @return string
-     */
-    private function getApiUrl()
-    {
-        return 'http://api.sbif.cl/api-sbifv3/recursos_api';
+        return sprintf('%s%s', $this->apiUrl, $path);
     }
 
     /**

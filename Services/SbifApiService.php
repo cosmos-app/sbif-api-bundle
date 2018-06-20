@@ -9,7 +9,7 @@
 
 namespace CosmosApp\SbifApiBundle\Services;
 
-use CosmosApp\SbifApiBundle\Services\FinancialIndicator\FinancialIndicator;
+use CosmosApp\SbifApiBundle\Sbif\FinancialIndicator\FinancialIndicator;
 
 /**
  * @author Héctor Rojas <hector.d.rojas.s@gmail.com>
@@ -17,18 +17,16 @@ use CosmosApp\SbifApiBundle\Services\FinancialIndicator\FinancialIndicator;
 class SbifApiService
 {
     /**
-     * @var FinancialIndicator
+     * @var SbifApiClientService
      */
-    private $financialIndicator;
+    private $sbifApiClientService;
 
     /**
-     * SbifApi constructor.
-     *
-     * @param string $apiKey
+     * @param SbifApiClientService $sbifApiClientService
      */
-    public function __construct($apiKey)
+    public function __construct(SbifApiClientService $sbifApiClientService)
     {
-        $this->financialIndicator = new FinancialIndicator($apiKey);
+        $this->sbifApiClientService = $sbifApiClientService;
     }
 
     /**
@@ -36,7 +34,7 @@ class SbifApiService
      */
     public function getUsd()
     {
-        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::USD);
+        return new FinancialIndicator($this->sbifApiClientService, FinancialIndicator::USD);
     }
 
     /**
@@ -44,7 +42,7 @@ class SbifApiService
      */
     public function getEur()
     {
-        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::EUR);
+        return new FinancialIndicator($this->sbifApiClientService, FinancialIndicator::EUR);
     }
 
     /**
@@ -52,7 +50,7 @@ class SbifApiService
      */
     public function getIpc()
     {
-        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::IPC);
+        return new FinancialIndicator($this->sbifApiClientService, FinancialIndicator::IPC);
     }
 
     /**
@@ -60,7 +58,7 @@ class SbifApiService
      */
     public function getTmc()
     {
-        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::TMC);
+        return new FinancialIndicator($this->sbifApiClientService, FinancialIndicator::TMC);
     }
 
     /**
@@ -68,7 +66,7 @@ class SbifApiService
      */
     public function getTab()
     {
-        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::TAB);
+        return new FinancialIndicator($this->sbifApiClientService, FinancialIndicator::TAB);
     }
 
     /**
@@ -76,7 +74,7 @@ class SbifApiService
      */
     public function getUf()
     {
-        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::UF);
+        return new FinancialIndicator($this->sbifApiClientService, FinancialIndicator::UF);
     }
 
     /**
@@ -84,6 +82,6 @@ class SbifApiService
      */
     public function getUtm()
     {
-        return $this->financialIndicator->setIndicatorKey(FinancialIndicator::UTM);
+        return new FinancialIndicator($this->sbifApiClientService, FinancialIndicator::UTM);
     }
 }
